@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="...League+Gothic&family=Poppins:wght@100;400;600;800...">
     <title>FP Sellection</title>
 </head>
 
@@ -20,9 +13,9 @@
         <img src="img/logo.png" alt="logo fp">
         <nav>
             <ul>
-                <li>Home</li>
-                <li>Carros</li>
-                <li>Fale Conosco</li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#carros">Carros</a></li>
+                <li><a href="#contato">Fale conosco</a></li>
             </ul>
         </nav>
     </header>
@@ -30,14 +23,14 @@
     <section class="container">
         <div class="list">
 
-            <div class="item active ">
-                <div class="car-img">
-                    <img src="img/1.png" alt="imagem carro">
+            <article class="item active ">
+          
+                    <img src="img/1.png" alt="imagem carro" class="car-img">
                 </div>
                 <div class="content">
-                    <p class="car-information">
+                    <span class="car-information">
                         Único Dono
-                    </p>
+                    </span>
                     <h2>911 Turbo</h2>
                     <p class="description">
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis libero quae magni et suscipit
@@ -46,16 +39,16 @@
                     </p>
                     <button class="information">Saiba mais</button>
                 </div>
-            </div>
+            </article>
         
-            <div class="item">
+            <article class="item">
                 <div class="car-img">
-                    <img src="img/2.png" alt="imagem carro">
+                    <img src="img/2.png" alt="imagem carro" class="car-img">
                 </div>
                 <div class="content">
-                    <p class="car-information">
+                    <span class="car-information">
                         Conversível
-                    </p>
+                    </span>
                     <h2>Ferrari</h2>
                     <p class="description">
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis libero quae magni et suscipit
@@ -64,16 +57,16 @@
                     </p>
                     <button class="information">Saiba mais</button>
                 </div>
-            </div>
+            </article>
 
-            <div class="item">
-                <div class="car-img">
-                    <img src="img/3.png" alt="imagem carro">
-                </div>
+            <article class="item">
+              
+                    <img src="img/3.png" alt="imagem carro" class="car-img">
+                
                 <div class="content">
-                    <p class="car-information">
+                    <span class="car-information">
                         2015
-                    </p>
+                    </span>
                     <h2>Lamborghini</h2>
                     <p class="description">
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis libero quae magni et suscipit
@@ -82,12 +75,14 @@
                     </p>
                     <button class="information">Saiba mais</button>
                 </div>
-            </div>
+            </article>
          </div>
 
         <div class="arrows">
-            <button id="prev"><img src="img/arrow.png" alt="seta esquerda"></button>
-            <button id="next"><img src="img/arrow.png" alt="seta direita"></button>
+           <button id="prev" aria-label="Slide anterior"><img src="img/arrow.png" alt=""></button> 
+            <!-- aria-label descreve a função do botão para leitores de tela
+ alt="" vazio porque a imagem é decorativa (o botão já tem descrição)  -->
+            <button id="next" aria-label="Slide posterior"><img src="img/arrow.png" alt=""></button>
         </div>
 
         <div class="indicators">
@@ -102,4 +97,5 @@
 
     <script src="main.js"></script>
 </body>
+
 </html>
