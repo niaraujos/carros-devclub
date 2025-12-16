@@ -1,4 +1,4 @@
-/* ===== RESET E BASE ===== */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +14,7 @@ body {
     overflow: hidden;
 }
 
-/* ===== HEADER ===== */
+/* HEADER  */
 header {
     position: fixed;
     width: 80vw;
@@ -36,7 +36,7 @@ header nav ul {
     grid-template-columns: repeat(3, 200px);
 }
 
-/* Links da navegação */
+/* NOVO - Links da navegação */
 header nav a {
     color: #fff;
     text-decoration: none;
@@ -47,14 +47,14 @@ header nav a:hover {
     color: #beff1b;
 }
 
-/* ===== CONTAINER PRINCIPAL ===== */
+/* CONTAINER PRINCIPAL */
 .container {
     background-image: radial-gradient(#6a00d4, #411555);
     height: 50vw;
     position: relative;
 }
 
-/* ===== LISTA DE SLIDES ===== */
+/* LISTA DE SLIDES  */
 .list {
     width: 70vw;
     height: 100%;
@@ -73,7 +73,7 @@ header nav a:hover {
     border-top: 1px solid #fff;
 }
 
-/* ===== ITEM DO CARROSSEL (ARTICLE) ===== */
+/* ITEM DO CARROSSEL (AGORA É ARTICLE) */
 .item {
     position: absolute;
     inset: 0;
@@ -87,40 +87,37 @@ header nav a:hover {
     opacity: 1;
 }
 
-/* ===== IMAGEM DO CARRO ===== */
-.car-img {
+/* IMAGEM DO CARRO (AGORA A CLASSE ESTÁ NO IMG) */
+/* A classe .car-img agora está diretamente no img, não em uma div */
+img.car-img {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(0);
     width: 70%;
-}
-
-.car-img img {
-    width: 100%;
-    transform: rotate(0);
-    transition: 0.5s;
+    transition: transform 0.5s;
     transition-delay: 0.3s;
 }
 
-/* Sombra do carro */
-.car-img::before {
+/* Sombra do carro - usando ::after no item */
+.item::before {
     content: '';
     position: absolute;
     background-color: #000;
-    width: 100%;
+    width: 49%; /* 70% da largura da imagem */
     height: 100px;
-    top: 150%;
+    top: calc(50% + 150px);
     left: 50px;
     border-radius: 50%;
     filter: blur(30px);
+    z-index: -1;
 }
 
 /* Rotação quando ativo */
-.item.active .car-img img {
-    transform: rotate(-20deg);
+.item.active img.car-img {
+    transform: translateY(-50%) rotate(-20deg);
 }
 
-/* ===== CONTEÚDO DO SLIDE ===== */
+/*CONTEÚDO DO SLIDE*/
 .content {
     position: absolute;
     right: 100px;
@@ -137,7 +134,7 @@ header nav a:hover {
 .item .car-information,
 .item h2,
 .item .description,
-.item .information {
+.item button.information {
     transform: translateX(calc(200px * var(--calculation)));
     transition: 0.7s;
     transition-delay: 0.3s;
@@ -161,15 +158,16 @@ header nav a:hover {
 .item.active .car-information,
 .item.active h2,
 .item.active .description,
-.item.active .information {
+.item.active button.information {
     transform: translateX(0);
     opacity: 1;
 }
 
-/* Estilo do span car-information */
-.car-information {
+/* NOVO - Estilo do span car-information */
+span.car-information {
     font-weight: bold;
     font-size: 14px;
+    display: inline-block;
 }
 
 /* Título principal */
@@ -207,7 +205,7 @@ button.information:hover {
     background-color: #a8e015;
 }
 
-/* ===== SETAS DE NAVEGAÇÃO ===== */
+/*SETAS DE NAVEGAÇÃO  */
 .arrows {
     width: 70vw;
     position: absolute;
@@ -239,12 +237,12 @@ button.information:hover {
     pointer-events: none;
 }
 
-/* Espelha a seta do botão anterior */
+/* ATUALIZADO - Espelha a seta usando o ID #prev */
 #prev img {
     transform: scaleX(-1);
 }
 
-/* ===== INDICADORES ===== */
+/* INDICADORES */
 .indicators {
     position: absolute;
     top: 50%;
@@ -285,7 +283,7 @@ button.information:hover {
     background-color: #d9d9d9;
 }
 
-/* ===== RESPONSIVIDADE ===== */
+/* RESPONSIVIDADE  */
 @media (max-width: 1024px) {
     header {
         grid-template-columns: 1fr;
@@ -305,6 +303,10 @@ button.information:hover {
     .content {
         right: 50px;
     }
+    
+    img.car-img {
+        width: 80%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -319,5 +321,9 @@ button.information:hover {
     
     .arrows {
         width: 90vw;
+    }
+    
+    img.car-img {
+        width: 90%;
     }
 }
