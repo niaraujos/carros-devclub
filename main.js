@@ -36,3 +36,46 @@ document.getElementById('prev').addEventListener('click', () => {
 
 // Inicializa o carrossel
 updateCarousel();
+
+
+
+// // ===== VERSÃO ULTRA-MINIMALISTA GERADA PELA IA CLAUDE =====
+// const carousel = {
+//     items: document.querySelectorAll('.item'),
+//     dots: document.querySelectorAll('.indicators ul li'),
+//     number: document.querySelector('.indicators .number'),
+//     list: document.querySelector('.list'),
+//     current: 0,
+    
+//     update() {
+//         // Remove todas as classes 'active'
+//         this.items.forEach((el, i) => {
+//             el.classList.toggle('active', i === this.current);
+//         });
+//         this.dots.forEach((el, i) => {
+//             el.classList.toggle('active', i === this.current);
+//         });
+        
+//         // Atualiza número
+//         this.number.textContent = String(this.current + 1).padStart(2, '0');
+//     },
+    
+//     next() {
+//         this.list.style.setProperty('--calculation', 1);
+//         this.current = (this.current + 1) % this.items.length;
+//         this.update();
+//     },
+    
+//     prev() {
+//         this.list.style.setProperty('--calculation', -1);
+//         this.current = (this.current - 1 + this.items.length) % this.items.length;
+//         this.update();
+//     }
+// };
+
+// // Event listeners
+// document.getElementById('next').onclick = () => carousel.next();
+// document.getElementById('prev').onclick = () => carousel.prev();
+
+// // Inicializa
+// carousel.update();
