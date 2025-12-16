@@ -1,39 +1,38 @@
-let prevButton = document.getElementById('prev');
-let nextButton = document.getElementById('next');
-let container = document.querySelector('.container');
-let items = document.querySelectorAll('.list .item');
-let indicator = document.querySelector('.indicators');
-let dots = document.querySelectorAll('ul li');
-let list = container.querySelector('.list')
 
+const items = document.querySelectorAll('.item');
+const dots = document.querySelectorAll('.indicators ul li');
+const numberDisplay = document.querySelector('.indicators .number');
+const list = document.querySelector('.list');
 
-let active = 0;
-let firstPosition = 0;
-let lastPosition = items.length - 1;
+let currentIndex = 0;
 
-
-function setSlider(){
-    let itemOld = container.querySelector('.list .item.active');
-    itemOld.classList.remove('active');
-
-    let dotsOld = indicator.querySelector('ul li.active');
+// Função principal - atualiza o carrossel
+function updateCarousel() {
+    // Remove 'active' de todos
+    items.forEach(item => item.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
     
-    dots[active].classList.add('active');
-    indicator.querySelector('.number').innerHTML = '0' + (active + 1)
-};
-
-nextButton.onclick = () => {
-    list.style.setProperty('--calculation', 1)
-    /* if, else */
-    active = active + 1 > lastPosition ? 0 : active + 1
-    setSlider()
-    items[active].classList.add('active')
-}
-prevButton.onclick = () => {
-    list.style.setProperty('--calculation', -1)
-    active = active - 1 < firstPosition ? lastPosition : active - 1
-    setSlider()
-    items[active].classList.add('active')
+    // Adiciona 'active' no atual
+    items[currentIndex].classList.add('active');
+    dots[currentIndex].classList.add('active');
+    
+    // Atualiza o número (01, 02, 03...)
+    numberDisplay.textContent = String(currentIndex + 1).padStart(2, '0');
 }
 
-/* dotsOld.classList.remove('active')*/
+// Próximo slide
+document.getElementById('next').addEventListener('click', () => {
+    list.style.setProperty('--calculation', 1);
+    currentIndex = (currentIndex + 1) % items.length; // Loop circular
+    updateCarousel();
+});
+
+// Slide anterior
+document.getElementById('prev').addEventListener('click', () => {
+    list.style.setProperty('--calculation', -1);
+    currentIndex = (currentIndex - 1 + items.length) % items.length; // Loop circular
+    updateCarousel();
+});
+
+// Inicializa o carrossel
+updateCarousel();
